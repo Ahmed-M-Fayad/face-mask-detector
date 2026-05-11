@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Model weights (large files — add back if you want them in repo)
+# *.h5
+
+# Temp files from original code
+temp.jpg
+
+# Environment
+.env
+.venv/
+venv/
+env/
+train/
+test/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
