@@ -1,0 +1,9 @@
+# Requirements specifically for HuggingFace Spaces deployment
+# Key difference: opencv-python-headless instead of opencv-python
+# (servers have no display — the regular opencv package crashes without one)
+
+tensorflow
+opencv-python-headless
+numpy
+Pillow
+streamlit

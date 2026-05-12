@@ -46,9 +46,9 @@ def main():
     if args.mode == 'train':
         # Map model name to builder function and save path
         model_map = {
-            'custom':    ('model',           'build_custom_cnn',  'mymodel_custom.h5'),
-            'mobilenet': ('model_mobilenet', 'build_mobilenet',   'mymodel_mobilenet.h5'),
-            'vgg16':     ('model_vgg16',     'build_vgg16',       'mymodel_vgg16.h5'),
+            'custom':    ('src.model',           'build_custom_cnn',  'models/mymodel_custom.h5'),
+            'mobilenet': ('src.model_mobilenet', 'build_mobilenet',   'models/mymodel_mobilenet.h5'),
+            'vgg16':     ('src.model_vgg16',     'build_vgg16',       'models/mymodel_vgg16.h5'),
         }
 
         if args.model not in model_map:
@@ -65,7 +65,7 @@ def main():
         model = build_fn()
         model.summary()
 
-        from train import run_training
+        from src.train import run_training
         run_training(model, save_path)
 
     elif args.mode == 'detect':
@@ -74,14 +74,14 @@ def main():
 
         # If user passed architecture name instead of file path, map it
         default_paths = {
-            'custom':    'mymodel_custom.h5',
-            'mobilenet': 'mymodel_mobilenet.h5',
-            'vgg16':     'mymodel_vgg16.h5',
+            'custom':    'models/mymodel_custom.h5',
+            'mobilenet': 'models/mymodel_mobilenet.h5',
+            'vgg16':     'models/mymodel_vgg16.h5',
         }
         if model_path in default_paths:
             model_path = default_paths[model_path]
 
-        from detector import run_detection
+        from src.detector import run_detection
         run_detection(model_path)
 
 
